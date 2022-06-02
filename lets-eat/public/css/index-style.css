@@ -1,0 +1,10 @@
+.header-container {
+    width: 100%;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.random-container {
+    width: 100%;
+    text-align: center;
+}

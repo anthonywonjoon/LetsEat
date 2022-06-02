@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index-style.css">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+       
+        async function getRandomMeal() {
+            const response = await fetch('www.themealdb.com/api/json/v1/1/random.php', { method: 'POST'});
+            const mealJson = await response.json();
+            document.getElementById('meal').innerHTML = `${mealJson.meals[0][strMeal]}`
+        }
+
+    </script>
+    <div class="main-container">
+        <div class="header-container">
+            <h1>Let's Eat</h1>
+        </div>
+        <div class="random-container">
+            <h1>Random Meal</h1>
+            <p>For when you can't think of what to make, or just want to try something new!</p>
+            <button onClick="getRandomMeal()">Get Random Meal!</button>
+            <div id="meal">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
