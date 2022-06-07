@@ -1,3 +1,8 @@
+img {
+    width: 500px;
+    height: 500px;
+}
+
 .header-container {
     width: 100%;
     border-bottom: 1px solid black;
@@ -7,4 +12,33 @@
 .random-container {
     width: 100%;
     text-align: center;
+}
+
+.meal-prep-container {
+    width: 100%;
+    text-align: center;
+    display: flex;
+}
+
+.meal-prep {
+    width: 100%;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.meal-prep p {
+
+    margin: 0;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.meal-instructions-container {
+    padding-top: 100px;
+}
+
+.meal-instructions {
+    line-height: 20px;
 }
