@@ -1,0 +1,13 @@
+.category-display-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 500px 500px 500px;
+    grid-gap: 20px;
+    justify-content: center;
+}
+
+.block {
+    border: solid black 1px;
+    height: 500px;
+    text-align: center;
+}

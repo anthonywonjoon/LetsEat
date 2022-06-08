@@ -1,0 +1,40 @@
+.nav-container {
+    width: 100%;
+    border-bottom: 1px solid black;
+    display: flex;
+    font-size: 17px;
+    background-color: #333;
+    color: #f1f1f1;
+    font-weight:bold;
+}
+
+.nav-links {
+    text-align: right;
+    width: 100%;
+    float: right;
+    justify-content: right;
+}
+
+.nav-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav-links li {
+    display: inline;
+    float: left;
+}
+
+.nav-links a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+.nav-links a:hover {
+    color: gray;
+}

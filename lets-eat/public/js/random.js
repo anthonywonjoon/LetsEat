@@ -13,7 +13,9 @@ function getRandomMeal() {
 function displayRandomMeal(data) {
     // header -- picture and name of meal
     console.log(data);
-    document.getElementById('meal').innerHTML = JSON.stringify(data['strMeal']);
+    mealName = JSON.stringify(data['strMeal']);
+    mealName = mealName.replaceAll('"', '');
+    document.getElementById('meal').innerHTML = mealName;
     document.getElementById('meal-picture').innerHTML = `<img src='${data["strMealThumb"]}'>`
 
     // ingredients and measurements 

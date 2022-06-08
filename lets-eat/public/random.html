@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/random-style.css">
+    <link rel="stylesheet" href="./css/nav-style.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script type="text/javascript" src="./js/nav.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" src="./js/random.js"></script>
+    <div class="main-container">
+        <div id="navbar"></div>
+        <div class="random-container">
+            <h1>Random Meal</h1>
+            <p>For when you can't think of what to make, or just want to try something new!</p>
+            <button id="random-meal" onClick="getRandomMeal()">Get Random Meal!</button>
+            <div class="meal-container">
+                <h1 id="meal"></h1>
+                <div id="meal-picture"></div>
+                <div id="meal-prep-container">
+                    <h1 id="meal-prep-title"></h1>
+                    <script>
+                        for (i = 0; i < 20; i++){
+                            document.write(`
+                                <div class="meal-prep" id="meal-prep">
+                                    <strong><p class="meal-ingredients" id="meal-ingredients${i}"></p></strong><p class="meal-measurement" id="meal-measurement${i}"></p>
+                                </div>
+                            `);
+                        }
+                    </script>
+                </div>
+                <div id="meal-instructions-container">
+                    <h1 id="meal-instructions-title"></h1>
+                    <div id="meal-instructions"></div>
+                </div>
+                <div id="meal-video"></div>
+            </div>
+            
+        </div>
+    </div>
+    <script>navbarCreation()</script>
+</body>
+
+</html>
