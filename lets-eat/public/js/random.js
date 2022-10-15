@@ -1,4 +1,4 @@
-function getRandomMeal() {
+function getRandomMeal() { // call themealdb api
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
     .then(res => res.json())
     .then(res => {
@@ -10,17 +10,20 @@ function getRandomMeal() {
     });
 }
 
+/* function to display all recipe data
+* param data -- takes in raw json data
+*/
 function displayRandomMeal(data) {
     // header -- picture and name of meal
     console.log(data);
-    mealName = JSON.stringify(data['strMeal']);
-    mealName = mealName.replaceAll('"', '');
-    document.getElementById('meal').innerHTML = mealName;
-    document.getElementById('meal-picture').innerHTML = `<img src='${data["strMealThumb"]}'>`
+    mealName = JSON.stringify(data['strMeal']); // convert JSON data into string
+    mealName = mealName.replaceAll('"', ''); // remove all weird string stuff
+    document.getElementById('meal').innerHTML = mealName; // replace "meal" div with the name of the meal
+    document.getElementById('meal-picture').innerHTML = `<img src='${data["strMealThumb"]}'>` // input meal image into "meal-picture" div
 
     // ingredients and measurements 
-    document.getElementById('meal-prep-title').innerHTML = 'Ingredients!'
-    ingredients = storeIngredients(data);
+    document.getElementById('meal-prep-title').innerHTML = 'Ingredients!' 
+    ingredients = storeIngredients(data); 
     measurements = storeMeasurements(data);
     for (i = 0; i < 20; i++){
         if (ingredients[i] != "" && ingredients[i] != null && ingredients[i] != undefined){
@@ -45,31 +48,43 @@ function displayRandomMeal(data) {
     
 }
 
+/* function to get the ingredients
+* param data -- takes in raw json data
+* return array of ingredients
+*/
 function storeIngredients(data) {
-    ingredients = [];
-    for (i = 1; i < 20; i++){
-            currIng = JSON.stringify(data[`strIngredient${i}`]);
-            finalIng = currIng.replaceAll('"', '');
-            if (finalIng != "" && finalIng != null && finalIng != undefined) {
-                ingredients.push(finalIng);
+    ingredients = []; // creates an array to store ingredients
+    for (i = 1; i < 20; i++){ // loop through array for 20 iterations
+            currIng = JSON.stringify(data[`strIngredient${i}`]); // convert the current ingredient to a string
+            finalIng = currIng.replaceAll('"', ''); // removes all funky characters 
+            if (finalIng != "" && finalIng != null && finalIng != undefined) { // if the ingredient is valid
+                ingredients.push(finalIng); // push ingredient to array
             }
     }
-    return ingredients;
+    return ingredients; // return array of ingredients
 }
 
-function storeMeasurements(data) {
-    measurements = [];
-    for (i = 1; i < 20; i++){
-            currMeasure = JSON.stringify(data[`strMeasure${i}`]);
-            finalMes = currMeasure.replaceAll('"', '');
-            if (finalMes != "" && finalMes != null && finalMes != undefined) {
-                measurements.push(finalMes);
+/* function to get measurements for ingredients
+* param data -- takesi n the raw json data
+* return array with measurements for each ingredient
+*/
+function storeMeasurements(data) { 
+    measurements = []; // create array to store measurements
+    for (i = 1; i < 20; i++){ // loop through array 20 iterations
+            currMeasure = JSON.stringify(data[`strMeasure${i}`]); // convert current measurement to string
+            finalMes = currMeasure.replaceAll('"', ''); // remove all funky characters
+            if (finalMes != "" && finalMes != null && finalMes != undefined) { // if measurement is valid
+                measurements.push(finalMes); // push measurement into array
             }
     }
-    return measurements;
+    return measurements; // return measurement array
 }
 
-function getInstructions(data){
+/* function to get recipe from data
+* param data -- takes in the raw json data
+* return stringified recipe
+*/
+function getInstructions(data){ 
     instructions = [];
     rawInstr = JSON.stringify(data);
     rawInstr = rawInstr.replaceAll("\\r\\", "");
@@ -79,6 +94,10 @@ function getInstructions(data){
     return instructions;
 }
 
+/* function to get the youtube video url for the recipe
+* param data -- takes in the raw json data
+* return url for video
+*/
 function getVideo(data){
     url = JSON.stringify(data);
     url = url.replaceAll('watch?v=', 'embed/');
